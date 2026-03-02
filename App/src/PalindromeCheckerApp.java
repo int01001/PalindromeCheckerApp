@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class uc7 {
+public class uc6 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,16 +9,18 @@ public class uc7 {
 
         String processed = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        Deque<Character> deque = new ArrayDeque<>();
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
         for (char ch : processed.toCharArray()) {
-            deque.addLast(ch);
+            queue.add(ch);
+            stack.push(ch);
         }
 
         boolean isPalindrome = true;
 
-        while (deque.size() > 1) {
-            if (!deque.removeFirst().equals(deque.removeLast())) {
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }

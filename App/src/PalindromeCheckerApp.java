@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
-public class uc2 {
+public class uc3 {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a string: ");
-        String word = scanner.nextLine();
+        String original = scanner.nextLine();
 
         String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed += original.charAt(i);
         }
 
-        if (word.equals(reversed)) {
-            System.out.println("The string \"" + word + "\" is a Palindrome.");
+        if (original.equals(reversed)) {
+            System.out.println("Palindrome ✅");
         } else {
-            System.out.println("The string \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Not a Palindrome ❌");
         }
 
         scanner.close();

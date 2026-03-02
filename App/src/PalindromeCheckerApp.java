@@ -1,41 +1,35 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class uc5 {
+public class uc6 {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        // Create Stack
+        String processed = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+        for (char ch : processed.toCharArray()) {
+            queue.add(ch);
+            stack.push(ch);
         }
 
         boolean isPalindrome = true;
 
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-
-            char poppedChar = stack.pop();
-
-            if (input.charAt(i) != poppedChar) {
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
         if (isPalindrome) {
-            System.out.println("The string \"" + input + "\" is a Palindrome ✅");
+            System.out.println("The string is a palindrome.");
         } else {
-            System.out.println("The string \"" + input + "\" is NOT a Palindrome ❌");
+            System.out.println("The string is not a palindrome.");
         }
 
         scanner.close();

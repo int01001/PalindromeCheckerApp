@@ -1,27 +1,31 @@
-public class PalindromeCheckerUC10 {
+class PalindromeChecker {
 
-public static void main(String[] args) {
-String input = &quot;A man a plan a canal Panama&quot;;
-String normalized = input.replaceAll(&quot;\\s+&quot;, &quot;&quot;).toLowerCase();
-
-boolean isPalindrome = true;
+boolean checkPalindrome(String input) {
 int start = 0;
-int end = normalized.length() - 1;
+int end = input.length() - 1;
 
-while (start &lt; end) {
-if (normalized.charAt(start) != normalized.charAt(end)) {
-isPalindrome = false;
-break;
+while (start < end) {
+if (input.charAt(start) != input.charAt(end)) {
+return false;
 }
 start++;
-
 end--;
 }
 
-if (isPalindrome) {
-System.out.println(&quot;The string \&quot;&quot; + input + &quot;\&quot; is a palindrome.&quot;);
+return true;
+}
+}
+
+public class PalindromeCheckerUC11 {
+
+public static void main(String[] args) {
+String word = "level";
+PalindromeChecker checker = new PalindromeChecker();
+
+if (checker.checkPalindrome(word)) {
+System.out.println("The string \"" + word + "\" is a palindrome.");
 } else {
-System.out.println(&quot;The string \&quot;&quot; + input + &quot;\&quot; is not a palindrome.&quot;);
+System.out.println("The string \"" + word + "\" is not a palindrome.");
 }
 }
 }

@@ -1,21 +1,25 @@
-import java.util.*;
+public class PalindromeCheckerUC9 {
 
-public class PalindromeCheckerApp {
-    public static boolean isPalindrome(String input) {
-        LinkedList<Character> list = new LinkedList<>();
-        for (char c : input.toLowerCase().toCharArray()) {
-            list.add(c);
-        }
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
-                return false;
-            }
-        }
-        return true;
-    }
+public static void main(String[] args) {
+String word = &quot;level&quot;;
+boolean result = isPalindrome(word, 0, word.length() - 1);
 
-    public static void main(String[] args) {
-        String input = "level";
-        System.out.println(isPalindrome(input));
-    }
+if (result) {
+System.out.println(&quot;The string \&quot;&quot; + word + &quot;\&quot; is a palindrome.&quot;);
+} else {
+System.out.println(&quot;The string \&quot;&quot; + word + &quot;\&quot; is not a palindrome.&quot;);
+}
+}
+
+static boolean isPalindrome(String str, int start, int end) {
+if (start &gt;= end) {
+return true;
+}
+
+if (str.charAt(start) != str.charAt(end)) {
+return false;
+}
+
+return isPalindrome(str, start + 1, end - 1);
+}
 }

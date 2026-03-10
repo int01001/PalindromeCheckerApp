@@ -1,25 +1,27 @@
-public class PalindromeCheckerUC9 {
+public class PalindromeCheckerUC10 {
 
 public static void main(String[] args) {
-String word = &quot;level&quot;;
-boolean result = isPalindrome(word, 0, word.length() - 1);
+String input = &quot;A man a plan a canal Panama&quot;;
+String normalized = input.replaceAll(&quot;\\s+&quot;, &quot;&quot;).toLowerCase();
 
-if (result) {
-System.out.println(&quot;The string \&quot;&quot; + word + &quot;\&quot; is a palindrome.&quot;);
+boolean isPalindrome = true;
+int start = 0;
+int end = normalized.length() - 1;
+
+while (start &lt; end) {
+if (normalized.charAt(start) != normalized.charAt(end)) {
+isPalindrome = false;
+break;
+}
+start++;
+
+end--;
+}
+
+if (isPalindrome) {
+System.out.println(&quot;The string \&quot;&quot; + input + &quot;\&quot; is a palindrome.&quot;);
 } else {
-System.out.println(&quot;The string \&quot;&quot; + word + &quot;\&quot; is not a palindrome.&quot;);
+System.out.println(&quot;The string \&quot;&quot; + input + &quot;\&quot; is not a palindrome.&quot;);
 }
-}
-
-static boolean isPalindrome(String str, int start, int end) {
-if (start &gt;= end) {
-return true;
-}
-
-if (str.charAt(start) != str.charAt(end)) {
-return false;
-}
-
-return isPalindrome(str, start + 1, end - 1);
 }
 }
